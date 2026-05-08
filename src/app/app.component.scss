@@ -1,0 +1,228 @@
+/* ============================================================
+   APP COMPONENT SCSS - Estilos del Menú Lateral
+   ============================================================
+   Diseño: Dark Mode Premium con acentos en color primario (#6c63ff)
+   Adaptativo: Variables CSS de Ionic sobreescritas para unificar
+   la apariencia en Android (Material) e iOS (Cupertino).
+   ============================================================ */
+
+/* ── Toolbar del menú ── */
+.menu-app-title {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.menu-logo-icon {
+  font-size: 1.4rem;
+  color: var(--ion-color-primary);
+  vertical-align: middle;
+}
+
+/* ── Contenido del menú ── */
+.menu-content {
+  --background: #111827;
+}
+
+/* ── Tarjeta de perfil de usuario ── */
+.menu-user-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 16px 16px;
+}
+
+.menu-avatar-container {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.menu-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid var(--ion-color-primary);
+  object-fit: cover;
+  box-shadow: 0 0 12px rgba(108, 99, 255, 0.4);
+}
+
+.menu-status-dot {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 12px;
+  height: 12px;
+  background-color: #22c55e;
+  border-radius: 50%;
+  border: 2px solid #111827;
+}
+
+.menu-user-info {
+  flex: 1;
+  overflow: hidden;
+}
+
+.menu-user-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #f9fafb;
+  margin: 0 0 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.menu-user-title {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin: 0 0 6px;
+}
+
+.menu-institution-badge {
+  font-size: 0.65rem;
+  border-radius: 4px;
+}
+
+/* ── Divisor ── */
+.menu-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #374151, transparent);
+  margin: 8px 16px;
+}
+
+/* ── Lista de navegación ── */
+.menu-nav-list {
+  padding: 4px 8px;
+  background: transparent;
+}
+
+.menu-nav-item {
+  --background: transparent;
+  --background-hover: rgba(108, 99, 255, 0.12);
+  --background-activated: rgba(108, 99, 255, 0.2);
+  --color: #d1d5db;
+  --border-radius: 10px;
+  margin-bottom: 4px;
+  border-radius: 10px;
+  position: relative;
+  overflow: visible;
+  transition: background 0.2s ease;
+
+  &.selected {
+    --background: rgba(108, 99, 255, 0.15);
+    --color: var(--ion-color-primary);
+
+    .menu-nav-icon {
+      color: var(--ion-color-primary);
+    }
+
+    .menu-nav-label {
+      color: var(--ion-color-primary);
+      font-weight: 600;
+    }
+  }
+}
+
+.menu-active-indicator {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 0;
+  background: var(--ion-color-primary);
+  border-radius: 0 3px 3px 0;
+  transition: height 0.3s ease;
+
+  &.visible {
+    height: 60%;
+  }
+}
+
+.menu-nav-icon {
+  font-size: 1.3rem;
+  color: #9ca3af;
+  transition: color 0.2s ease;
+}
+
+.menu-nav-label {
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.menu-badge {
+  font-size: 0.7rem;
+}
+
+/* ── Sección de stack técnico ── */
+.menu-tech-section {
+  padding: 8px 16px 16px;
+}
+
+.menu-section-label {
+  font-size: 0.75rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 10px;
+
+  ion-icon {
+    font-size: 0.9rem;
+  }
+}
+
+.menu-chips-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.menu-tech-chip {
+  --background: transparent;
+  font-size: 0.7rem;
+  height: 24px;
+  cursor: default;
+}
+
+/* ── Pie del menú ── */
+.menu-footer {
+  background: #0d1117;
+  border-top: 1px solid #1f2937;
+}
+
+.menu-footer-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+}
+
+.menu-footer-icon {
+  font-size: 1.4rem;
+  color: #4b5563;
+  flex-shrink: 0;
+}
+
+.menu-footer-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-footer-env {
+  font-size: 0.7rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.menu-footer-server {
+  font-size: 0.65rem;
+  color: #4b5563;
+}

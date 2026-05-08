@@ -1,0 +1,192 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Contacto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="contacto-content" [fullscreen]="true">
+
+  <!-- ════════════════════════════════════════════
+    CABECERA
+    ════════════════════════════════════════════ -->
+  <div class="contacto-hero">
+    <div class="contacto-hero-icon">
+      <ion-icon name="mail-outline"></ion-icon>
+    </div>
+    <h1 class="contacto-title">Hablemos</h1>
+    <p class="contacto-subtitle">
+      ¿Tienes un proyecto en mente o quieres colaborar?<br>
+      Envía un mensaje y responderé a la brevedad.
+    </p>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+    INFO DE CONTACTO DIRECTO
+    ════════════════════════════════════════════ -->
+  <div class="contacto-info-grid ion-padding-horizontal">
+    <div class="info-chip" *ngFor="let info of contactInfo">
+      <ion-icon [name]="info.icon" [color]="info.color" class="info-chip-icon"></ion-icon>
+      <div class="info-chip-text">
+        <span class="info-chip-label">{{ info.label }}</span>
+        <span class="info-chip-value">{{ info.value }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+    FORMULARIO DE CONTACTO
+    ReactiveFormsModule con validaciones en tiempo real.
+    Futura integración: POST /api/v1/contacto (FastAPI)
+    ════════════════════════════════════════════ -->
+  <div class="ion-padding">
+    <ion-card class="form-card">
+      <ion-card-header>
+        <ion-card-title class="form-card-title">
+          <ion-icon name="create-outline"></ion-icon>
+          Enviar Mensaje
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+          <!-- ── NOMBRE ── -->
+          <div class="form-group">
+            <ion-item
+              class="form-item"
+              [class.item-error]="f['nombre'].touched && f['nombre'].invalid"
+            >
+              <ion-icon name="person-outline" slot="start" class="input-icon"></ion-icon>
+              <ion-input
+                id="input-nombre"
+                formControlName="nombre"
+                label="Nombre completo"
+                labelPlacement="floating"
+                placeholder="Tu nombre"
+                type="text"
+                autocomplete="name"
+              ></ion-input>
+            </ion-item>
+            <p class="error-msg" *ngIf="f['nombre'].touched && f['nombre'].errors?.['required']">
+              <ion-icon name="alert-circle-outline"></ion-icon>
+              El nombre es requerido.
+            </p>
+            <p class="error-msg" *ngIf="f['nombre'].touched && f['nombre'].errors?.['minlength']">
+              <ion-icon name="alert-circle-outline"></ion-icon>
+              Mínimo 2 caracteres.
+            </p>
+          </div>
+
+          <!-- ── EMAIL ── -->
+          <div class="form-group">
+            <ion-item
+              class="form-item"
+              [class.item-error]="f['email'].touched && f['email'].invalid"
+            >
+              <ion-icon name="mail-outline" slot="start" class="input-icon"></ion-icon>
+              <ion-input
+                id="input-email"
+                formControlName="email"
+                label="Correo electrónico"
+                labelPlacement="floating"
+                placeholder="correo@ejemplo.com"
+                type="email"
+                autocomplete="email"
+              ></ion-input>
+            </ion-item>
+            <p class="error-msg" *ngIf="f['email'].touched && f['email'].errors?.['required']">
+              <ion-icon name="alert-circle-outline"></ion-icon>
+              El email es requerido.
+            </p>
+            <p class="error-msg" *ngIf="f['email'].touched && f['email'].errors?.['email']">
+              <ion-icon name="alert-circle-outline"></ion-icon>
+              Formato de email inválido.
+            </p>
+          </div>
+
+          <!-- ── ASUNTO ── -->
+          <div class="form-group">
+            <ion-item
+              class="form-item"
+              [class.item-error]="f['asunto'].touched && f['asunto'].invalid"
+            >
+              <ion-icon name="chatbox-outline" slot="start" class="input-icon"></ion-icon>
+              <ion-input
+                id="input-asunto"
+                formControlName="asunto"
+                label="Asunto"
+                labelPlacement="floating"
+                placeholder="Tema del mensaje"
+                type="text"
+              ></ion-input>
+            </ion-item>
+            <p class="error-msg" *ngIf="f['asunto'].touched && f['asunto'].errors?.['required']">
+              <ion-icon name="alert-circle-outline"></ion-icon>
+              El asunto es requerido.
+            </p>
+          </div>
+
+          <!-- ── MENSAJE ── -->
+          <div class="form-group">
+            <ion-item
+              class="form-item textarea-item"
+              [class.item-error]="f['mensaje'].touched && f['mensaje'].invalid"
+            >
+              <ion-icon name="document-text-outline" slot="start" class="input-icon"></ion-icon>
+              <ion-textarea
+                id="input-mensaje"
+                formControlName="mensaje"
+                label="Mensaje"
+                labelPlacement="floating"
+                placeholder="Cuéntame sobre tu proyecto o consulta..."
+                [rows]="5"
+                autoGrow="true"
+              ></ion-textarea>
+            </ion-item>
+            <p class="error-msg" *ngIf="f['mensaje'].touched && f['mensaje'].errors?.['required']">
+              <ion-icon name="alert-circle-outline"></ion-icon>
+              El mensaje es requerido.
+            </p>
+            <p class="error-msg" *ngIf="f['mensaje'].touched && f['mensaje'].errors?.['minlength']">
+              <ion-icon name="alert-circle-outline"></ion-icon>
+              Mínimo 10 caracteres.
+            </p>
+          </div>
+
+          <!-- ── SUBMIT BTN ── -->
+          <ion-button
+            type="submit"
+            expand="block"
+            color="primary"
+            shape="round"
+            class="submit-btn"
+            [disabled]="isSubmitting"
+          >
+            <ion-spinner
+              *ngIf="isSubmitting"
+              name="crescent"
+              slot="start"
+            ></ion-spinner>
+            <ion-icon
+              *ngIf="!isSubmitting"
+              name="send-outline"
+              slot="start"
+            ></ion-icon>
+            {{ isSubmitting ? 'Enviando...' : 'Enviar Mensaje' }}
+          </ion-button>
+
+        </form>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Nota de API -->
+    <div class="api-note">
+      <ion-icon name="code-slash-outline"></ion-icon>
+      <span>Formulario integrado con <strong>FastAPI · PostgreSQL</strong></span>
+    </div>
+  </div>
+
+</ion-content>

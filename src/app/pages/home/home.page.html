@@ -1,0 +1,139 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>HRDev</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" routerLink="/perfil">
+        <ion-icon slot="icon-only" name="person-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="home-content" [fullscreen]="true">
+
+  <!-- ════════════════════════════════════════════════
+    HERO SECTION
+    ════════════════════════════════════════════════ -->
+  <div class="hero-section">
+    <div class="hero-bg-orbs">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+
+    <div class="hero-content">
+      <!-- Avatar / Foto de perfil -->
+      <div class="hero-avatar-wrapper">
+        <img
+          src="assets/avatar.png"
+          alt="Héctor Rodríguez"
+          class="hero-avatar"
+          onerror="this.src='assets/icon/favicon.svg'"
+        />
+        <div class="hero-avatar-ring"></div>
+      </div>
+
+      <!-- Texto de presentación -->
+      <div class="hero-greeting">Buenos días, soy</div>
+      <h1 class="hero-name">Héctor Rodríguez</h1>
+      <div class="hero-tags">
+        <span class="hero-tag">Tech Lead</span>
+        <span class="hero-tag-sep">·</span>
+        <span class="hero-tag">TSU Informática</span>
+        <span class="hero-tag-sep">·</span>
+        <span class="hero-tag">Backend Python</span>
+      </div>
+      <p class="hero-description">
+        Especialista en desarrollo de sistemas backend con <strong>FastAPI</strong> y <strong>PostgreSQL</strong>.
+        Experiencia en infraestructuras de virtualización con <strong>Proxmox</strong> y redes seguras con <strong>Tailscale</strong>.
+        Apasionado por la Inteligencia Artificial aplicada a la educación y la resolución de problemas complejos.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="hero-actions">
+        <ion-button
+          routerLink="/perfil"
+          expand="block"
+          color="primary"
+          class="hero-btn-primary"
+          shape="round"
+        >
+          <ion-icon slot="start" name="person-circle-outline"></ion-icon>
+          Ver Perfil Completo
+        </ion-button>
+        <ion-button
+          routerLink="/contacto"
+          expand="block"
+          fill="outline"
+          color="light"
+          class="hero-btn-secondary"
+          shape="round"
+        >
+          <ion-icon slot="start" name="mail-outline"></ion-icon>
+          Contactar
+        </ion-button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════
+    ESTADÍSTICAS RÁPIDAS
+    ════════════════════════════════════════════════ -->
+  <div class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-card" *ngFor="let stat of stats">
+        <ion-icon [name]="stat.icon" class="stat-icon"></ion-icon>
+        <span class="stat-value">{{ stat.value }}</span>
+        <span class="stat-label">{{ stat.label }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════
+    ACCESOS RÁPIDOS
+    ════════════════════════════════════════════════ -->
+  <div class="quick-section ion-padding">
+    <h2 class="section-title">
+      <ion-icon name="flash-outline"></ion-icon>
+      Acceso Rápido
+    </h2>
+
+    <div class="quick-grid">
+      <ion-card
+        *ngFor="let link of quickLinks"
+        [routerLink]="link.url"
+        class="quick-card"
+        button
+      >
+        <ion-card-content class="quick-card-content">
+          <div class="quick-icon-wrapper" [class]="'bg-' + link.color">
+            <ion-icon [name]="link.icon"></ion-icon>
+          </div>
+          <div class="quick-text">
+            <h3>{{ link.title }}</h3>
+            <p>{{ link.subtitle }}</p>
+          </div>
+          <ion-icon name="chevron-forward-outline" class="quick-arrow"></ion-icon>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════
+    INFRA BADGE
+    ════════════════════════════════════════════════ -->
+  <div class="infra-section ion-padding">
+    <div class="infra-card">
+      <ion-icon name="server-outline" class="infra-icon"></ion-icon>
+      <div class="infra-text">
+        <span class="infra-title">Entorno de Desarrollo</span>
+        <span class="infra-detail">Proxmox · Tailscale · Sunshine · Xeon E5 2690 v4</span>
+      </div>
+      <ion-badge color="success" class="infra-badge">Online</ion-badge>
+    </div>
+  </div>
+
+</ion-content>

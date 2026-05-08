@@ -1,0 +1,145 @@
+<!-- ============================================================
+  APP COMPONENT TEMPLATE - ion-menu lateral dinámico
+  ============================================================
+  ARQUITECTURA:
+    ion-menu        → Panel de navegación lateral (sidebar)
+    ion-router-outlet → Renderiza las páginas con Lazy Loading
+  
+  La directiva [ngClass] aplica estilo "selected" a la ruta activa.
+  Los datos (appPages, userProfile) provienen de app.component.ts,
+  permitiendo un menú 100% data-driven sin hardcodear el HTML.
+  ============================================================ -->
+
+<ion-app>
+
+  <!-- ====================================================
+    ION-MENU LATERAL
+    menuId="main-menu" es referenciado desde cada página
+    con MenuController.enable('main-menu')
+    ==================================================== -->
+  <ion-menu contentId="main-content" type="overlay" menuId="main-menu">
+    <ion-header>
+      <ion-toolbar color="dark">
+        <!-- Logo / Título de la aplicación -->
+        <ion-title class="menu-app-title">
+          <ion-icon name="code-slash-outline" class="menu-logo-icon"></ion-icon>
+          HRDev
+        </ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content class="ion-padding-vertical menu-content">
+
+      <!-- ================================================
+        SECCIÓN: Tarjeta de perfil del usuario
+        En producción: datos cargados desde FastAPI/JWT
+        ================================================ -->
+      <div class="menu-user-card">
+        <div class="menu-avatar-container">
+          <img
+            [src]="userProfile.avatar"
+            [alt]="userProfile.name"
+            class="menu-avatar"
+            onerror="this.src='assets/icon/favicon.svg'"
+          />
+          <div class="menu-status-dot"></div>
+        </div>
+        <div class="menu-user-info">
+          <h2 class="menu-user-name">{{ userProfile.name }}</h2>
+          <p class="menu-user-title">{{ userProfile.title }}</p>
+          <ion-badge class="menu-institution-badge" color="primary">
+            {{ userProfile.institution }}
+          </ion-badge>
+        </div>
+      </div>
+
+      <!-- ================================================
+        DIVISOR
+        ================================================ -->
+      <div class="menu-divider"></div>
+
+      <!-- ================================================
+        SECCIÓN: Navegación principal (generada dinámicamente)
+        *ngFor itera sobre appPages definido en app.component.ts
+        El routerLink activa el Lazy Loading de cada módulo.
+        ================================================ -->
+      <ion-list lines="none" class="menu-nav-list">
+        <ion-menu-toggle auto-hide="false" *ngFor="let page of appPages; let i = index">
+          <ion-item
+            [routerLink]="page.url"
+            routerDirection="root"
+            [class.selected]="isSelected(page.url)"
+            class="menu-nav-item"
+            detail="false"
+            button
+          >
+            <!-- Indicador lateral de ruta activa -->
+            <div class="menu-active-indicator" [class.visible]="isSelected(page.url)"></div>
+
+            <ion-icon
+              slot="start"
+              [name]="page.icon"
+              class="menu-nav-icon"
+            ></ion-icon>
+
+            <ion-label class="menu-nav-label">{{ page.title }}</ion-label>
+
+            <!-- Badge opcional (ej: número de notificaciones) -->
+            <ion-badge
+              *ngIf="page.badge"
+              slot="end"
+              color="danger"
+              class="menu-badge"
+            >
+              {{ page.badge }}
+            </ion-badge>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+
+      <!-- ================================================
+        SECCIÓN: Stack tecnológico (chips)
+        Muestra las tecnologías dominadas para contexto rápido.
+        Futuro: cargar desde API FastAPI /api/v1/skills
+        ================================================ -->
+      <div class="menu-divider"></div>
+      <div class="menu-tech-section">
+        <p class="menu-section-label">
+          <ion-icon name="layers-outline"></ion-icon>
+          Stack Técnico
+        </p>
+        <div class="menu-chips-container">
+          <ion-chip
+            *ngFor="let tech of techStack"
+            class="menu-tech-chip"
+            color="primary"
+            outline="true"
+          >
+            <ion-label>{{ tech }}</ion-label>
+          </ion-chip>
+        </div>
+      </div>
+
+    </ion-content>
+
+    <!-- Pie del menú con info de entorno de desarrollo -->
+    <ion-footer class="menu-footer">
+      <div class="menu-footer-content">
+        <ion-icon name="server-outline" class="menu-footer-icon"></ion-icon>
+        <div class="menu-footer-text">
+          <span class="menu-footer-env">Proxmox · Tailscale · Sunshine</span>
+          <span class="menu-footer-server">Xeon E5 2690 v4 · RTX 3060</span>
+        </div>
+      </div>
+    </ion-footer>
+  </ion-menu>
+
+  <!-- ====================================================
+    ÁREA DE CONTENIDO PRINCIPAL
+    id="main-content" debe coincidir con contentId del ion-menu
+    El ion-router-outlet renderiza dinámicamente cada página
+    usando Lazy Loading configurado en app-routing.module.ts
+    ==================================================== -->
+  <ion-router-outlet id="main-content"></ion-router-outlet>
+
+</ion-app>

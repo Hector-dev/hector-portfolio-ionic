@@ -1,0 +1,212 @@
+/* ============================================================
+   CONTACTO PAGE SCSS
+   ============================================================ */
+
+.contacto-content {
+  --background: #0d1117;
+}
+
+/* ── Hero ── */
+.contacto-hero {
+  padding: 52px 24px 28px;
+  text-align: center;
+  animation: fadeInUp 0.6s ease both;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.contacto-hero-icon {
+  width: 72px;
+  height: 72px;
+  background: rgba(108, 99, 255, 0.12);
+  border: 1px solid rgba(108, 99, 255, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+
+  ion-icon {
+    font-size: 2rem;
+    color: var(--ion-color-primary);
+  }
+}
+
+.contacto-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #fff, #6c63ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 8px;
+}
+
+.contacto-subtitle {
+  font-size: 0.85rem;
+  color: #6b7280;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Info Grid ── */
+.contacto-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.info-chip {
+  background: #161b27;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.info-chip-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.info-chip-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+}
+
+.info-chip-label {
+  font-size: 0.65rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.info-chip-value {
+  font-size: 0.73rem;
+  color: #d1d5db;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Form Card ── */
+.form-card {
+  --background: #161b27;
+  border: 1px solid #1f2937;
+  border-radius: 20px !important;
+  margin: 0 0 16px;
+  box-shadow: none;
+}
+
+.form-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #f9fafb;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  ion-icon {
+    color: var(--ion-color-primary);
+    font-size: 1.1rem;
+  }
+}
+
+/* ── Form Groups ── */
+.form-group {
+  margin-bottom: 8px;
+}
+
+.form-item {
+  --background: #1f2937;
+  --border-radius: 12px;
+  --border-color: transparent;
+  --highlight-color-focused: var(--ion-color-primary);
+  --inner-padding-end: 12px;
+  border-radius: 12px;
+  margin-bottom: 4px;
+  border: 1px solid #374151;
+  transition: border-color 0.2s ease;
+
+  &.item-error {
+    border-color: #ef4444;
+  }
+
+  ion-input, ion-textarea {
+    --color: #f9fafb;
+    --placeholder-color: #4b5563;
+    font-size: 0.88rem;
+  }
+}
+
+.textarea-item {
+  align-items: flex-start;
+
+  .input-icon {
+    margin-top: 16px;
+  }
+}
+
+.input-icon {
+  font-size: 1.1rem;
+  color: #6b7280;
+}
+
+.error-msg {
+  font-size: 0.72rem;
+  color: #ef4444;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 2px 4px 6px;
+  animation: fadeIn 0.2s ease;
+
+  ion-icon { font-size: 0.85rem; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Submit button ── */
+.submit-btn {
+  margin-top: 20px;
+  --background: var(--ion-color-primary);
+  --box-shadow: 0 4px 20px rgba(108, 99, 255, 0.4);
+  font-weight: 600;
+  font-size: 0.9rem;
+  height: 50px;
+}
+
+/* ── API Note ── */
+.api-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  font-size: 0.72rem;
+  color: #4b5563;
+  margin-bottom: 32px;
+
+  ion-icon {
+    font-size: 0.9rem;
+    color: #6b7280;
+  }
+
+  strong {
+    color: #6b7280;
+  }
+}

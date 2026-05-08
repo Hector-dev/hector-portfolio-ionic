@@ -1,0 +1,22 @@
+# Dependency
+/node_modules
+/node_modules-bak
+/node_modules-old
+
+# Build outputs
+/www
+/dist
+/.angular
+/electron
+/ios
+/android
+
+# IDEs and editors
+/.idea
+/.vscode
+*.swp
+*.swo
+
+# System Files
+.DS_Store
+Thumbs.db

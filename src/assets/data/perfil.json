@@ -1,0 +1,124 @@
+{
+  "persona": {
+    "nombre": "Héctor Rodríguez",
+    "titulo": "TSU en Informática | Tech Lead",
+    "subtitulo": "mid en Backend y servidores · python · PostgreSQL",
+    "email": "hectorrdev@ggmail.com",
+    "ubicacion": "Venezuela",
+    "github": "github.com/Hector-dev",
+    "resumen": "TSU en Informática con amplia experiencia en desarrollo de sistemas backend utilizando Python (FastAPI/Flask). Desempeñé roles críticos como Analista de Datos en la UNETI y pasante en soporte técnico en el CICPC, donde gestioné servidores críticos y desarrolló software de monitoreo. Mi enfoque no se limita a escribir código; se orienta a la resolución de problemas complejos mediante Inteligencia Artificial y la optimización del ciclo de vida del software."
+  },
+  "experiencias": [
+    {
+      "empresa": "UNETI",
+      "cargo": "Analista de Datos",
+      "periodo": "2023 – Presente",
+      "ubicacion": "Venezuela",
+      "colorAccent": "#6c63ff",
+      "icon": "school-outline",
+      "descripcion": [
+        "Análisis y procesamiento de datos académicos y administrativos institucionales.",
+        "Desarrollo de la Plataforma Educativa Cacique Tamanaco con módulos de gestión inclusiva.",
+        "Implementación de sistema de asistente IA (SIS-UNETI) con FastAPI y DeepSeek LLM.",
+        "Integración de módulos accesibles para estudiantes con necesidades educativas especiales.",
+        "Gestión y mantenimiento de bases de datos PostgreSQL para la plataforma educativa."
+      ],
+      "tecnologias": [
+        "Python",
+        "FastAPI",
+        "PostgreSQL",
+        "Docker",
+        "tailscale",
+        "protmox"
+      ]
+    },
+    {
+      "empresa": "CICPC",
+      "cargo": "Pasante – Soporte Técnico y Desarrollo",
+      "periodo": "2022 – 2023",
+      "ubicacion": "Venezuela",
+      "colorAccent": "#f59e0b",
+      "icon": "shield-outline",
+      "descripcion": [
+        "Gestión y administración de servidores críticos institucionales del organismo.",
+        "Desarrollo de software de monitoreo para infraestructura de red interna.",
+        "Soporte técnico de hardware y software a nivel institucional.",
+        "Mantenimiento preventivo y correctivo de equipos de cómputo.",
+        "Documentación técnica de procedimientos y configuraciones de red."
+      ],
+      "tecnologias": [
+        "Linux",
+        "Redes",
+        "Python",
+        "Bash",
+        "Monitoreo"
+      ]
+    }
+  ],
+  "educacion": [
+    {
+      "institucion": "UNETI",
+      "titulo": "Ingeniería en Informática",
+      "periodo": "2023 – En curso",
+      "estado": "En Progreso",
+      "icon": "school-outline"
+    },
+    {
+      "institucion": "UNETI",
+      "titulo": "TSU en Informática",
+      "periodo": "2021 – 2023",
+      "estado": "Graduado",
+      "icon": "ribbon-outline"
+    }
+  ],
+  "habilidades": [
+    {
+      "categoria": "Backend",
+      "icon": "server-outline",
+      "items": [
+        {
+          "nombre": "Python",
+          "nivel": 90
+        },
+        {
+          "nombre": "FastAPI",
+          "nivel": 88
+        },
+        {
+          "nombre": "Flask",
+          "nivel": 80
+        },
+        {
+          "nombre": "PostgreSQL",
+          "nivel": 82
+        },
+        {
+          "nombre": "Docker",
+          "nivel": 75
+        }
+      ]
+    },
+    {
+      "categoria": "Frontend & Mobile",
+      "icon": "phone-portrait-outline",
+      "items": [
+        {
+          "nombre": "Angular",
+          "nivel": 78
+        },
+        {
+          "nombre": "Ionic",
+          "nivel": 75
+        },
+        {
+          "nombre": "TypeScript",
+          "nivel": 77
+        },
+        {
+          "nombre": "HTML/CSS",
+          "nivel": 85
+        }
+      ]
+    }
+  ]
+}

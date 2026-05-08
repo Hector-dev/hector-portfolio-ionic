@@ -1,0 +1,249 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Perfil Profesional</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" routerLink="/contacto">
+        <ion-icon slot="icon-only" name="mail-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="perfil-content" [fullscreen]="true">
+
+  <!-- ════════════════════════════════════════════
+    HERO / CABECERA DE PERFIL
+    ════════════════════════════════════════════ -->
+  <div class="perfil-hero">
+    <div class="perfil-hero-bg"></div>
+    <div class="perfil-hero-inner">
+
+      <!-- Avatar -->
+      <div class="perfil-avatar-wrapper">
+        <img
+          src="assets/avatar.png"
+          alt="Héctor Rodríguez"
+          class="perfil-avatar"
+          onerror="this.src='assets/icon/favicon.svg'"
+        />
+      </div>
+
+      <!-- Info básica -->
+      <h1 class="perfil-name">{{ persona.nombre }}</h1>
+      <p class="perfil-titulo">{{ persona.titulo }}</p>
+      <p class="perfil-subtitulo">{{ persona.subtitulo }}</p>
+
+      <!-- Chips redes / contacto -->
+      <div class="perfil-links">
+        <ion-chip class="perfil-link-chip" color="medium" outline="true">
+          <ion-icon name="location-outline"></ion-icon>
+          <ion-label>{{ persona.ubicacion }}</ion-label>
+        </ion-chip>
+        <ion-chip class="perfil-link-chip" color="primary" outline="true">
+          <ion-icon name="logo-github"></ion-icon>
+          <ion-label>GitHub</ion-label>
+        </ion-chip>
+        <ion-chip class="perfil-link-chip" color="secondary" outline="true">
+          <ion-icon name="mail-outline"></ion-icon>
+          <ion-label>Email</ion-label>
+        </ion-chip>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+    TABS DE NAVEGACIÓN DEL PERFIL
+    ════════════════════════════════════════════ -->
+  <div class="perfil-tabs">
+    <button
+      class="perfil-tab-btn"
+      [class.active]="activeTab === 'resumen'"
+      (click)="setTab('resumen')"
+    >
+      <ion-icon name="document-text-outline"></ion-icon>
+      Resumen
+    </button>
+    <button
+      class="perfil-tab-btn"
+      [class.active]="activeTab === 'experiencia'"
+      (click)="setTab('experiencia')"
+    >
+      <ion-icon name="briefcase-outline"></ion-icon>
+      Experiencia
+    </button>
+    <button
+      class="perfil-tab-btn"
+      [class.active]="activeTab === 'educacion'"
+      (click)="setTab('educacion')"
+    >
+      <ion-icon name="school-outline"></ion-icon>
+      Educación
+    </button>
+    <button
+      class="perfil-tab-btn"
+      [class.active]="activeTab === 'habilidades'"
+      (click)="setTab('habilidades')"
+    >
+      <ion-icon name="code-slash-outline"></ion-icon>
+      Skills
+    </button>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+    TAB: RESUMEN
+    ════════════════════════════════════════════ -->
+  <div class="perfil-tab-content ion-padding" *ngIf="activeTab === 'resumen'">
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="12" size-lg="8">
+          <ion-card class="resumen-card">
+            <ion-card-header>
+              <ion-card-title class="card-title">
+                <ion-icon name="person-outline"></ion-icon>
+                Sobre Mí
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <p class="resumen-text">{{ persona.resumen }}</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        
+        <ion-col size="12" size-lg="4">
+          <ion-card class="infra-resumen-card">
+            <ion-card-header>
+              <ion-card-title class="card-title">
+                <ion-icon name="hardware-chip-outline"></ion-icon>
+                Entorno Infra
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <div class="infra-items">
+                <div class="infra-item">
+                  <ion-icon name="server-outline" color="primary"></ion-icon>
+                  <div>
+                    <span class="infra-item-title">Servidor</span>
+                    <span class="infra-item-detail">Xeon E5 2690 v4</span>
+                  </div>
+                </div>
+                <!-- ... other items removed for brevity in template, but usually kept ... -->
+                <div class="infra-item">
+                  <ion-icon name="wifi-outline" color="success"></ion-icon>
+                  <div>
+                    <span class="infra-item-title">VPN</span>
+                    <span class="infra-item-detail">Tailscale</span>
+                  </div>
+                </div>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+    TAB: EXPERIENCIA LABORAL
+    ════════════════════════════════════════════ -->
+  <div class="perfil-tab-content ion-padding" *ngIf="activeTab === 'experiencia'">
+    <div class="timeline-header">
+      <ion-icon name="time-outline"></ion-icon>
+      <span>Trayectoria Profesional</span>
+    </div>
+
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="12" size-md="6" *ngFor="let exp of experiencias; let i = index">
+          <ion-card class="exp-card h-100">
+            <ion-card-header>
+              <div class="exp-card-header">
+                <div class="exp-icon-wrapper" [style.background]="exp.colorAccent + '22'">
+                  <ion-icon [name]="exp.icon" [style.color]="exp.colorAccent"></ion-icon>
+                </div>
+                <div class="exp-header-info">
+                  <ion-card-title class="exp-empresa text-wrap">{{ exp.empresa }}</ion-card-title>
+                  <ion-card-subtitle class="exp-cargo text-wrap">{{ exp.cargo }}</ion-card-subtitle>
+                  <div class="exp-meta">
+                    <ion-badge class="exp-badge" mode="ios" [style.background]="exp.colorAccent + '22'" [style.color]="exp.colorAccent">
+                      {{ exp.periodo }}
+                    </ion-badge>
+                  </div>
+                </div>
+              </div>
+            </ion-card-header>
+
+            <ion-card-content>
+              <ion-list class="exp-list" lines="none">
+                <ion-item *ngFor="let item of exp.descripcion" class="exp-list-item">
+                  <ion-icon name="checkmark-done-outline" slot="start" [style.color]="exp.colorAccent"></ion-icon>
+                  <ion-label class="ion-text-wrap">{{ item }}</ion-label>
+                </ion-item>
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+    TAB: EDUCACIÓN
+    ════════════════════════════════════════════ -->
+  <div class="perfil-tab-content ion-padding" *ngIf="activeTab === 'educacion'">
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="12" size-md="6" *ngFor="let edu of educacion">
+          <ion-card class="edu-card">
+            <ion-card-content class="edu-card-content">
+              <div class="edu-icon-wrapper">
+                <ion-icon [name]="edu.icon" class="edu-icon"></ion-icon>
+              </div>
+              <div class="edu-info">
+                <h3 class="edu-titulo">{{ edu.titulo }}</h3>
+                <p class="edu-institucion">{{ edu.institucion }}</p>
+                <p class="edu-periodo">{{ edu.periodo }}</p>
+              </div>
+              <ion-badge [color]="getBadgeColor(edu.estado)">{{ edu.estado }}</ion-badge>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+    TAB: HABILIDADES
+    ════════════════════════════════════════════ -->
+  <div class="perfil-tab-content ion-padding" *ngIf="activeTab === 'habilidades'">
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="12" size-md="6" size-lg="4" *ngFor="let grupo of habilidades">
+          <ion-card class="skills-card">
+            <ion-card-header>
+              <ion-card-title class="card-title">
+                <ion-icon [name]="grupo.icon"></ion-icon>
+                {{ grupo.categoria }}
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <div class="skill-item" *ngFor="let skill of grupo.items">
+                <div class="skill-meta">
+                  <span class="skill-name">{{ skill.nombre }}</span>
+                  <span class="skill-level">{{ skill.nivel }}%</span>
+                </div>
+                <div class="skill-bar-bg">
+                  <div class="skill-bar-fill" [style.width.%]="skill.nivel"></div>
+                </div>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>

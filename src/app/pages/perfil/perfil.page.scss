@@ -1,0 +1,470 @@
+/* ============================================================
+   PERFIL PAGE SCSS - Módulo de Información Personal
+   ============================================================ */
+
+.perfil-content {
+  --background: #0d1117;
+}
+
+/* ── Hero ── */
+.perfil-hero {
+  position: relative;
+  padding: 48px 24px 32px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.perfil-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(108, 99, 255, 0.15) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.perfil-hero-inner {
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 0.6s ease both;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.perfil-avatar-wrapper {
+  margin-bottom: 16px;
+}
+
+.perfil-avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  border: 3px solid var(--ion-color-primary);
+  object-fit: cover;
+  box-shadow: 0 0 24px rgba(108, 99, 255, 0.5);
+}
+
+.perfil-name {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #f9fafb;
+  margin: 0 0 4px;
+  background: linear-gradient(135deg, #fff, #6c63ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.perfil-titulo {
+  font-size: 0.85rem;
+  color: var(--ion-color-primary);
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.perfil-subtitulo {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin: 0 0 16px;
+}
+
+.perfil-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.perfil-link-chip {
+  height: 28px;
+  font-size: 0.72rem;
+}
+
+/* ── Tabs ── */
+.perfil-tabs {
+  display: flex;
+  background: #161b27;
+  border-bottom: 1px solid #1f2937;
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar { display: none; }
+}
+
+.perfil-tab-btn {
+  flex: 1;
+  min-width: 80px;
+  background: none;
+  border: none;
+  color: #6b7280;
+  padding: 12px 8px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+
+  ion-icon {
+    font-size: 1.1rem;
+  }
+
+  &.active {
+    color: var(--ion-color-primary);
+    border-bottom-color: var(--ion-color-primary);
+  }
+}
+
+/* ── Tab Content ── */
+.perfil-tab-content {
+  animation: fadeInTab 0.3s ease both;
+}
+
+@keyframes fadeInTab {
+  from { opacity: 0; transform: translateX(10px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Cards genéricas ── */
+.card-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #f9fafb;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  ion-icon {
+    color: var(--ion-color-primary);
+    font-size: 1.1rem;
+  }
+}
+
+/* ── Resumen Card ── */
+.resumen-card,
+.infra-resumen-card {
+  --background: #161b27;
+  border: 1px solid #1f2937;
+  border-radius: 16px !important;
+  margin: 0 0 16px;
+  box-shadow: none;
+}
+
+.resumen-text {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  line-height: 1.8;
+}
+
+/* ── Infra Items ── */
+.infra-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.infra-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  ion-icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+}
+
+.infra-item-title {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #d1d5db;
+}
+
+.infra-item-detail {
+  font-size: 0.72rem;
+  color: #6b7280;
+}
+
+/* ── Timeline ── */
+.timeline-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6b7280;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 16px;
+
+  ion-icon { font-size: 1rem; }
+}
+
+.timeline {
+  position: relative;
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 0;
+  margin-bottom: 16px;
+}
+
+/* ── Experiencia Card ── */
+.exp-card {
+  --background: #161b27;
+  border: 1px solid #1f2937;
+  border-radius: 16px !important;
+  margin: 0;
+  box-shadow: none;
+}
+
+.exp-card-header {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.exp-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  ion-icon {
+    font-size: 1.5rem;
+  }
+}
+
+.exp-header-info {
+  flex: 1;
+}
+
+.exp-empresa {
+  font-size: 1.05rem !important;
+  font-weight: 800 !important;
+  color: #f9fafb !important;
+}
+
+.exp-cargo {
+  font-size: 0.8rem !important;
+  color: #9ca3af !important;
+  margin-bottom: 8px;
+}
+
+.exp-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.exp-periodo-chip {
+  height: 24px;
+  font-size: 0.65rem;
+}
+
+.exp-list {
+  background: transparent;
+  margin-bottom: 12px;
+}
+
+.exp-list-item {
+  --background: transparent;
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  align-items: flex-start;
+}
+
+.exp-check-icon {
+  font-size: 1rem;
+  margin-top: 3px;
+}
+
+.exp-desc-text {
+  font-size: 0.82rem;
+  color: #9ca3af;
+  line-height: 1.6;
+  white-space: normal;
+}
+
+.exp-tech-section {
+  border-top: 1px solid #1f2937;
+  padding-top: 12px;
+}
+
+.exp-tech-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #6b7280;
+  display: block;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.exp-tech-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.exp-tech-chip {
+  height: 24px;
+  font-size: 0.68rem;
+}
+
+/* ── Educación ── */
+.edu-card {
+  --background: #161b27;
+  border: 1px solid #1f2937;
+  border-radius: 16px !important;
+  margin: 0 0 12px;
+  box-shadow: none;
+}
+
+.edu-card-content {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px !important;
+}
+
+.edu-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  background: rgba(108, 99, 255, 0.12);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.edu-icon {
+  font-size: 1.5rem;
+  color: var(--ion-color-primary);
+}
+
+.edu-info {
+  flex: 1;
+}
+
+.edu-titulo {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #f9fafb;
+  margin: 0 0 2px;
+}
+
+.edu-institucion {
+  font-size: 0.78rem;
+  color: var(--ion-color-primary);
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.edu-periodo {
+  font-size: 0.72rem;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+
+  ion-icon { font-size: 0.8rem; }
+}
+
+.edu-badge {
+  font-size: 0.65rem;
+  flex-shrink: 0;
+}
+
+.nota-card {
+  --background: rgba(108, 99, 255, 0.06);
+  border: 1px solid rgba(108, 99, 255, 0.2);
+  border-radius: 12px !important;
+  box-shadow: none;
+  margin: 0;
+}
+
+.nota-text {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  line-height: 1.6;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+
+  ion-icon {
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+}
+
+/* ── Skills ── */
+.skills-card {
+  --background: #161b27;
+  border: 1px solid #1f2937;
+  border-radius: 16px !important;
+  margin: 0 0 16px;
+  box-shadow: none;
+}
+
+.skill-item {
+  margin-bottom: 14px;
+
+  &:last-child { margin-bottom: 0; }
+}
+
+.skill-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.skill-name {
+  font-size: 0.82rem;
+  color: #d1d5db;
+  font-weight: 500;
+}
+
+.skill-level {
+  font-size: 0.75rem;
+  color: var(--ion-color-primary);
+  font-weight: 600;
+}
+
+.skill-bar-bg {
+  height: 6px;
+  background: #1f2937;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6c63ff, #a78bfa);
+  border-radius: 3px;
+  transition: width 1s ease;
+  animation: growBar 1s ease both;
+}
+
+@keyframes growBar {
+  from { width: 0 !important; }
+}
