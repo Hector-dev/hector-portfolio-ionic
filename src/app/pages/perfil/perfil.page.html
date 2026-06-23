@@ -42,13 +42,13 @@
           <ion-icon name="location-outline"></ion-icon>
           <ion-label>{{ persona.ubicacion }}</ion-label>
         </ion-chip>
-        <ion-chip class="perfil-link-chip" color="primary" outline="true">
+        <ion-chip button class="perfil-link-chip" color="primary" outline="true" (click)="openExternal(githubUrl)">
           <ion-icon name="logo-github"></ion-icon>
-          <ion-label>GitHub</ion-label>
+          <ion-label>{{ persona.githubLabel }}</ion-label>
         </ion-chip>
-        <ion-chip class="perfil-link-chip" color="secondary" outline="true">
+        <ion-chip button class="perfil-link-chip" color="secondary" outline="true" (click)="openExternal(mailToLink)">
           <ion-icon name="mail-outline"></ion-icon>
-          <ion-label>Email</ion-label>
+          <ion-label>{{ persona.email }}</ion-label>
         </ion-chip>
       </div>
 
@@ -244,6 +244,27 @@
         </ion-col>
       </ion-row>
     </ion-grid>
+  </div>
+
+  <!-- ════════════════════════════════════════════════
+    FOOTER GLOBAL
+    ════════════════════════════════════════════════ -->
+  <div class="app-footer">
+    <div class="footer-content">
+      <span class="footer-copy">© 2026 <strong>HRDev</strong></span>
+      <span class="footer-sep">•</span>
+      <span class="footer-made-with">
+        <ion-icon name="code-slash-outline"></ion-icon> Hecho con Ionic & Angular
+      </span>
+    </div>
+    <div class="footer-social">
+      <a href="https://github.com/Hector-dev" target="_blank" rel="noopener" class="footer-link">
+        <ion-icon name="logo-github"></ion-icon>
+      </a>
+      <a href="mailto:hectorrdev@gmail.com" class="footer-link">
+        <ion-icon name="mail-outline"></ion-icon>
+      </a>
+    </div>
   </div>
 
 </ion-content>

@@ -53,6 +53,8 @@ export interface GrupoHabilidades {
 export class PerfilPage implements OnInit {
 
   public persona: any = {};
+  public githubUrl = '';
+  public mailToLink = '';
   public experiencias: ExperienciaLaboral[] = [];
   public educacion: EducacionItem[] = [];
   public habilidades: GrupoHabilidades[] = [];
@@ -70,14 +72,28 @@ export class PerfilPage implements OnInit {
   loadData() {
     this.http.get('assets/data/perfil.json').subscribe((data: any) => {
       this.persona = data.persona;
+      this.persona.githubLabel = data.persona.github?.replace(/^https?:\/\//, '') || 'GitHub';
+      this.githubUrl = this.normalizeGithubUrl(data.persona.github);
+      this.mailToLink = `mailto:${data.persona.email}`;
       this.experiencias = data.experiencias;
       this.educacion = data.educacion;
       this.habilidades = data.habilidades;
     });
   }
 
+  normalizeGithubUrl(github: string): string {
+    if (!github) {
+      return 'https://github.com';
+    }
+    return github.startsWith('http') ? github : `https://${github}`;
+  }
+
   setTab(tab: 'resumen' | 'experiencia' | 'educacion' | 'habilidades'): void {
     this.activeTab = tab;
+  }
+
+  openExternal(url: string): void {
+    window.open(url, '_blank', 'noopener');
   }
 
   openMenu(): void {

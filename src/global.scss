@@ -54,7 +54,7 @@ ion-card {
 
 /* ── Toolbar global ── */
 ion-toolbar {
-  --background: #161b27;
+  --background: #0d1117;
   --border-color: #1f2937;
 }
 
@@ -93,5 +93,120 @@ ion-toast {
 
   .loading-content {
     color: #d1d5db;
+  }
+}
+
+/* ── Global text overflow prevention ── */
+ion-content {
+  overflow-x: hidden;
+}
+
+p, span, h1, h2, h3, h4, h5, h6, a, li, td, th, label, div {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* ── Default responsive padding for ion-content ── */
+ion-content.main-content {
+  --padding-start: 0;
+  --padding-end: 0;
+
+  @media (max-width: 768px) {
+    --padding-start: 4px;
+    --padding-end: 4px;
+  }
+}
+
+/* ── Global Footer ── */
+.app-footer {
+  margin-top: 28px;
+  padding: 18px 20px;
+  border-top: 1px solid #1f2937;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: #0d1117;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.footer-copy {
+  font-size: 0.72rem;
+  color: #6b7280;
+
+  strong {
+    color: #9ca3af;
+    font-weight: 600;
+  }
+}
+
+.footer-sep {
+  color: #374151;
+  font-size: 0.7rem;
+}
+
+.footer-made-with {
+  font-size: 0.7rem;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  ion-icon {
+    font-size: 0.8rem;
+    color: #6c63ff;
+  }
+}
+
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-link {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #1f2937;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.15s ease;
+  color: #9ca3af;
+
+  ion-icon {
+    font-size: 1rem;
+  }
+
+  &:hover {
+    background: var(--ion-color-primary);
+    color: #fff;
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+@media (max-width: 768px) {
+  .app-footer {
+    flex-direction: column;
+    text-align: center;
+    padding: 14px 12px;
+    gap: 8px;
+  }
+
+  .footer-content {
+    justify-content: center;
   }
 }

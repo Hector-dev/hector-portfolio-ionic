@@ -4,12 +4,18 @@
 
 .perfil-content {
   --background: #0d1117;
+
+  /* Global text overflow prevention */
+  * {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
 }
 
 /* ── Hero ── */
 .perfil-hero {
   position: relative;
-  padding: 48px 24px 32px;
+  padding: 48px 20px 32px;
   text-align: center;
   overflow: hidden;
 }
@@ -54,6 +60,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  word-break: break-word;
 }
 
 .perfil-titulo {
@@ -159,6 +166,8 @@
   font-size: 0.85rem;
   color: #9ca3af;
   line-height: 1.8;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 /* ── Infra Items ── */
@@ -172,6 +181,7 @@
   display: flex;
   align-items: flex-start;
   gap: 12px;
+  min-width: 0;
 
   ion-icon {
     font-size: 1.4rem;
@@ -183,6 +193,8 @@
     display: flex;
     flex-direction: column;
     gap: 2px;
+    min-width: 0;
+    overflow: hidden;
   }
 }
 
@@ -190,11 +202,16 @@
   font-size: 0.82rem;
   font-weight: 600;
   color: #d1d5db;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .infra-item-detail {
   font-size: 0.72rem;
   color: #6b7280;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 /* ── Timeline ── */
@@ -300,6 +317,8 @@
   color: #9ca3af;
   line-height: 1.6;
   white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .exp-tech-section {
@@ -362,6 +381,8 @@
 
 .edu-info {
   flex: 1;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .edu-titulo {
@@ -369,6 +390,9 @@
   font-weight: 700;
   color: #f9fafb;
   margin: 0 0 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .edu-institucion {
@@ -376,6 +400,9 @@
   color: var(--ion-color-primary);
   font-weight: 600;
   margin: 0 0 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .edu-periodo {
@@ -442,6 +469,10 @@
   font-size: 0.82rem;
   color: #d1d5db;
   font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 70%;
 }
 
 .skill-level {
@@ -467,4 +498,42 @@
 
 @keyframes growBar {
   from { width: 0 !important; }
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .perfil-hero {
+    padding: 40px 14px 24px;
+  }
+
+  .perfil-name {
+    font-size: 1.4rem;
+  }
+
+  .perfil-tab-btn {
+    font-size: 0.65rem;
+    padding: 10px 4px;
+  }
+
+  .resumen-card,
+  .infra-resumen-card,
+  .exp-card,
+  .edu-card,
+  .habilidad-card {
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+
+  .exp-empresa-img-placeholder {
+    width: 42px;
+    height: 42px;
+  }
+
+  .exp-desc-text {
+    font-size: 0.78rem;
+  }
+
+  .skill-name {
+    max-width: 60%;
+  }
 }

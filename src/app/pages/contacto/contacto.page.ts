@@ -16,6 +16,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 import { MenuController, ToastController, LoadingController } from '@ionic/angular';
 
 @Component({
@@ -106,24 +107,30 @@ export class ContactoPage implements OnInit {
       return;
     }
 
+    const { nombre, email, asunto, mensaje } = this.contactForm.value;
+    const destinatario = 'hectorrdev@gmail.com';
+    const subject = `[Contacto portafolio] ${asunto}`;
+    const body = `Nombre: ${nombre}\nEmail: ${email}\nAsunto: ${asunto}\n\nMensaje:\n${mensaje}`;
+    const mailtoLink = `mailto:${destinatario}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
     this.isSubmitting = true;
 
     const loading = await this.loadingCtrl.create({
-      message: 'Enviando mensaje...',
+      message: 'Abriendo tu cliente de correo...',
       spinner: 'crescent',
       cssClass: 'custom-loading'
     });
     await loading.present();
 
-    // Simulación de llamada a FastAPI (reemplazar con HttpClient)
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    // Redirige al cliente de correo del usuario para enviar el mensaje a tu inbox.
+    window.location.href = mailtoLink;
 
     await loading.dismiss();
     this.isSubmitting = false;
 
     const toast = await this.toastCtrl.create({
-      message: '✅ Mensaje enviado correctamente. ¡Gracias por contactar!',
-      duration: 3500,
+      message: '✅ Se preparó el correo para envío. Revisa tu cliente de email.',
+      duration: 4500,
       position: 'bottom',
       color: 'success',
       buttons: [{ icon: 'close-outline', role: 'cancel' }]
