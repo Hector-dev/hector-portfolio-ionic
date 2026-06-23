@@ -123,6 +123,63 @@
   </div>
 
   <!-- ════════════════════════════════════════════════
+    TECNOLOGÍAS — CARRUSEL
+    ════════════════════════════════════════════════ -->
+  <div class="tech-section">
+    <h2 class="section-title">
+      <ion-icon name="layers-outline"></ion-icon>
+      Tecnologías
+    </h2>
+
+    <div class="tech-carousel-wrapper">
+      <button class="tech-arrow tech-arrow-prev" (click)="prevSlide()" aria-label="Anterior">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </button>
+
+      <div class="tech-carousel-container">
+        <div
+          class="tech-carousel-track"
+          [style.transform]="'translateX(-' + (currentIndex * 100) + '%)'"
+        >
+          <div class="tech-slide" *ngFor="let tech of techs; let i = index">
+            <div
+              class="tech-card"
+              [class.flipped]="flippedStates[i]"
+              (click)="toggleFlip(i)"
+            >
+              <div class="tech-card-inner">
+                <!-- FRONT: icono + nombre -->
+                <div class="tech-card-front">
+                  <ion-icon [name]="tech.icon" class="tech-icon"></ion-icon>
+                  <span class="tech-name">{{ tech.name }}</span>
+                </div>
+                <!-- BACK: descripción -->
+                <div class="tech-card-back">
+                  <p class="tech-desc">{{ tech.desc }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="tech-arrow tech-arrow-next" (click)="nextSlide()" aria-label="Siguiente">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </button>
+    </div>
+
+    <!-- Puntos de navegación -->
+    <div class="tech-dots">
+      <span
+        *ngFor="let tech of techs; let i = index"
+        class="tech-dot"
+        [class.active]="currentIndex === i"
+        (click)="goToSlide(i)"
+      ></span>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════
     INFRA BADGE
     ════════════════════════════════════════════════ -->
   <div class="infra-section">
